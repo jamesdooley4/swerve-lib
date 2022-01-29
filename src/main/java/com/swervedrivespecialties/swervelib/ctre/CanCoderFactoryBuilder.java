@@ -34,7 +34,7 @@ public class CanCoderFactoryBuilder {
                 return new AbsoluteEncoder() {
                     @Override
                     public double getAbsoluteAngle() {
-                        return 0;
+                        return Double.NaN;
                     }
                 };
             }
