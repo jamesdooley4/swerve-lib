@@ -23,12 +23,22 @@ public class CanCoderFactoryBuilder {
             config.magnetOffsetDegrees = Math.toDegrees(configuration.getOffset());
             config.sensorDirection = direction == Direction.CLOCKWISE;
 
-            CANCoder encoder = new CANCoder(configuration.getId());
-            CtreUtils.checkCtreError(encoder.configAllSettings(config, 250), "Failed to configure CANCoder");
+            final var encoderId = configuration.getId();
+            if (encoderId != -1) {
+                CANCoder encoder = new CANCoder(configuration.getId());
+                CtreUtils.checkCtreError(encoder.configAllSettings(config, 250), "Failed to configure CANCoder");
 
-            CtreUtils.checkCtreError(encoder.setStatusFramePeriod(CANCoderStatusFrame.SensorData, periodMilliseconds, 250), "Failed to configure CANCoder update rate");
+                CtreUtils.checkCtreError(encoder.setStatusFramePeriod(CANCoderStatusFrame.SensorData, periodMilliseconds, 250), "Failed to configure CANCoder update rate");
+                return new EncoderImplementation(encoder);
+            } else {
+                return new AbsoluteEncoder() {
+                    @Override
+                    public double getAbsoluteAngle() {
+                        return 0;
+                    }
+                };
+            }
 
-            return new EncoderImplementation(encoder);
         };
     }
 
