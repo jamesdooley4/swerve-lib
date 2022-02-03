@@ -99,9 +99,13 @@ public final class Falcon500DriveControllerFactoryBuilder {
 
         @Override
         public void setReferenceVoltage(double voltage) {
-            final double percentOutput = voltage / nominalVoltage;
+            double percentOutput = voltage / nominalVoltage;
             motor.set(TalonFXControlMode.PercentOutput, percentOutput);
             if (RobotBase.isSimulation()) {
+                if (motor.getInverted()) {
+                    percentOutput *= -1.0;
+                }
+
                 // SelectedSensorVelocity is raw sensor units per 100ms
                 // See https://store.ctr-electronics.com/content/api/java/html/interfacecom_1_1ctre_1_1phoenix_1_1motorcontrol_1_1_i_motor_controller.html#a2e40db44cfbd62192ffac3fb7ccf5166
                 // Raw sensor units are 2048 ticks per rotation
