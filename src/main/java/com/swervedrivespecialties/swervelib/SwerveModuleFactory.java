@@ -38,7 +38,7 @@ public class SwerveModuleFactory<DriveConfiguration, SteerConfiguration> {
         return new ModuleImplementation(driveController, steerContainer);
     }
 
-    private static class ModuleImplementation implements SwerveModule {
+    private static class ModuleImplementation implements SwerveModule, AbsoluteEncoder {
         private final DriveController driveController;
         private final SteerController steerController;
 
@@ -89,6 +89,15 @@ public class SwerveModuleFactory<DriveConfiguration, SteerConfiguration> {
 
             driveController.setReferenceVoltage(driveVoltage);
             steerController.setReferenceAngle(steerAngle);
+        }
+
+        @Override
+        public double getAbsoluteAngle() {
+            if (steerController instanceof AbsoluteEncoder) {
+                AbsoluteEncoder encoder = (AbsoluteEncoder)steerController;
+                return encoder.getAbsoluteAngle();
+            }
+            return Double.NaN;
         }
     }
 }
