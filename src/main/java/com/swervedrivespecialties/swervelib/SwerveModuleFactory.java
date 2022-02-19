@@ -91,8 +91,12 @@ public class SwerveModuleFactory<DriveConfiguration, SteerConfiguration> {
             steerController.setReferenceAngle(steerAngle);
         }
 
-        // @return The current angle in radians. Range: [0, 2pi]. Returns Double.NaN if the steer controller doesn't
-        //         support returning the absolute encoder position
+        /**
+         * Gets the current angle reading of the encoder in radians.
+         *
+         * @return The current angle in radians. Range: [0, 2pi). Returns Double.NaN if the steer controller doesn't
+         *         support returning the absolute encoder position
+         */
         @Override
         public double getAbsoluteAngle() {
             if (steerController instanceof AbsoluteEncoder) {
