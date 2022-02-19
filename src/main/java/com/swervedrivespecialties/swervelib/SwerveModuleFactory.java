@@ -38,7 +38,7 @@ public class SwerveModuleFactory<DriveConfiguration, SteerConfiguration> {
         return new ModuleImplementation(driveController, steerContainer);
     }
 
-    private static class ModuleImplementation implements SwerveModule {
+    private static class ModuleImplementation implements SwerveModule, AbsoluteEncoder {
         private final DriveController driveController;
         private final SteerController steerController;
 
@@ -89,6 +89,21 @@ public class SwerveModuleFactory<DriveConfiguration, SteerConfiguration> {
 
             driveController.setReferenceVoltage(driveVoltage);
             steerController.setReferenceAngle(steerAngle);
+        }
+
+        /**
+         * Gets the current angle reading of the encoder in radians.
+         *
+         * @return The current angle in radians. Range: [0, 2pi). Returns Double.NaN if the steer controller doesn't
+         *         support returning the absolute encoder position
+         */
+        @Override
+        public double getAbsoluteAngle() {
+            if (steerController instanceof AbsoluteEncoder) {
+                AbsoluteEncoder encoder = (AbsoluteEncoder)steerController;
+                return encoder.getAbsoluteAngle();
+            }
+            return Double.NaN;
         }
     }
 }
