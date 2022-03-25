@@ -30,7 +30,7 @@ public class CanCoderFactoryBuilder {
 
             final var encoderId = configuration.getId();
             if (encoderId != -1) {
-                CANCoder encoder = new CANCoder(configuration.getId());
+                CANCoder encoder = new CANCoder(configuration.getId(), configuration.getCanBus());
                 CtreUtils.checkCtreError(encoder.configAllSettings(config, 250), "Failed to configure CANCoder");
 
                 CtreUtils.checkCtreError(encoder.setStatusFramePeriod(CANCoderStatusFrame.SensorData, periodMilliseconds, 250), "Failed to configure CANCoder update rate");

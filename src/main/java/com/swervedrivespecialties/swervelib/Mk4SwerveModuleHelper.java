@@ -164,7 +164,7 @@ public final class Mk4SwerveModuleHelper {
                 driveMotorPort,
                 new Falcon500SteerConfiguration<>(
                         steerMotorPort,
-                        new CanCoderAbsoluteConfiguration(steerEncoderPort, steerOffset)
+                        new CanCoderAbsoluteConfiguration(steerEncoderPort, steerOffset, canBus)
                 ),
                 canBus
         );
