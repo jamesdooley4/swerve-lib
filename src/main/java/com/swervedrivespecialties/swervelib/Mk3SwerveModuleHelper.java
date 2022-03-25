@@ -74,7 +74,8 @@ public final class Mk3SwerveModuleHelper {
                 new Falcon500SteerConfiguration<>(
                         steerMotorPort,
                         new CanCoderAbsoluteConfiguration(steerEncoderPort, steerOffset)
-                )
+                ),
+                "rio"
         );
     }
 
@@ -129,7 +130,8 @@ public final class Mk3SwerveModuleHelper {
                 new Falcon500SteerConfiguration<>(
                         steerMotorPort,
                         new CanCoderAbsoluteConfiguration(steerEncoderPort, steerOffset)
-                )
+                ),
+                "rio"
         );
     }
 
@@ -185,7 +187,8 @@ public final class Mk3SwerveModuleHelper {
                 new NeoSteerConfiguration<>(
                         steerMotorPort,
                         new CanCoderAbsoluteConfiguration(steerEncoderPort, steerOffset)
-                )
+                ),
+                "rio"
         );
     }
 
@@ -240,7 +243,8 @@ public final class Mk3SwerveModuleHelper {
                 new NeoSteerConfiguration<>(
                         steerMotorPort,
                         new CanCoderAbsoluteConfiguration(steerEncoderPort, steerOffset)
-                )
+                ),
+                "rio"
         );
     }
 
@@ -296,7 +300,8 @@ public final class Mk3SwerveModuleHelper {
                 new NeoSteerConfiguration<>(
                         steerMotorPort,
                         new CanCoderAbsoluteConfiguration(steerEncoderPort, steerOffset)
-                )
+                ),
+                "rio"
         );
     }
 
@@ -351,7 +356,8 @@ public final class Mk3SwerveModuleHelper {
                 new NeoSteerConfiguration<>(
                         steerMotorPort,
                         new CanCoderAbsoluteConfiguration(steerEncoderPort, steerOffset)
-                )
+                ),
+                "rio"
         );
     }
 
@@ -407,7 +413,8 @@ public final class Mk3SwerveModuleHelper {
                 new Falcon500SteerConfiguration<>(
                         steerMotorPort,
                         new CanCoderAbsoluteConfiguration(steerEncoderPort, steerOffset)
-                )
+                ),
+                "rio"
         );
     }
 
@@ -462,7 +469,8 @@ public final class Mk3SwerveModuleHelper {
                 new Falcon500SteerConfiguration<>(
                         steerMotorPort,
                         new CanCoderAbsoluteConfiguration(steerEncoderPort, steerOffset)
-                )
+                ),
+                "rio"
         );
     }
 

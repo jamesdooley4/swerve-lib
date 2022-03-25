@@ -74,7 +74,8 @@ public final class Mk4SwerveModuleHelper {
                 new Falcon500SteerConfiguration<>(
                         steerMotorPort,
                         new CanCoderAbsoluteConfiguration(steerEncoderPort, steerOffset)
-                )
+                ),
+                "rio"
         );
     }
 
@@ -129,7 +130,43 @@ public final class Mk4SwerveModuleHelper {
                 new Falcon500SteerConfiguration<>(
                         steerMotorPort,
                         new CanCoderAbsoluteConfiguration(steerEncoderPort, steerOffset)
-                )
+                ),
+                "rio"
+        );
+    }
+
+    /**
+     * Creates a Mk4 swerve module that uses Falcon 500s for driving and steering.
+     *
+     * @param configuration    Module configuration parameters to use.
+     * @param gearRatio        The gearing configuration the module is in.
+     * @param driveMotorPort   The CAN ID of the drive Falcon 500.
+     * @param steerMotorPort   The CAN ID of the steer Falcon 500.
+     * @param steerEncoderPort The CAN ID of the steer CANCoder.
+     * @param steerOffset      The offset of the CANCoder in radians.
+     * @param canBus           The can bus name the motors are on
+     * @return The configured swerve module.
+     */
+    public static SwerveModule createFalcon500(
+            Mk4ModuleConfiguration configuration,
+            GearRatio gearRatio,
+            int driveMotorPort,
+            int steerMotorPort,
+            int steerEncoderPort,
+            double steerOffset,
+            String canBus
+    ) {
+        return new SwerveModuleFactory<>(
+                gearRatio.getConfiguration(),
+                getFalcon500DriveFactory(configuration),
+                getFalcon500SteerFactory(configuration)
+        ).create(
+                driveMotorPort,
+                new Falcon500SteerConfiguration<>(
+                        steerMotorPort,
+                        new CanCoderAbsoluteConfiguration(steerEncoderPort, steerOffset)
+                ),
+                canBus
         );
     }
 
@@ -151,6 +188,28 @@ public final class Mk4SwerveModuleHelper {
             double steerOffset
     ) {
         return createFalcon500(new Mk4ModuleConfiguration(), gearRatio, driveMotorPort, steerMotorPort, steerEncoderPort, steerOffset);
+    }
+
+    /**
+     * Creates a Mk4 swerve module that uses Falcon 500s for driving and steering.
+     *
+     * @param gearRatio        The gearing configuration the module is in.
+     * @param driveMotorPort   The CAN ID of the drive Falcon 500.
+     * @param steerMotorPort   The CAN ID of the steer Falcon 500.
+     * @param steerEncoderPort The CAN ID of the steer CANCoder.
+     * @param steerOffset      The offset of the CANCoder in radians.
+     * @param canBus           The can bus name the motors are on
+     * @return The configured swerve module.
+     */
+    public static SwerveModule createFalcon500(
+            GearRatio gearRatio,
+            int driveMotorPort,
+            int steerMotorPort,
+            int steerEncoderPort,
+            double steerOffset,
+            String canBus
+    ) {
+        return createFalcon500(new Mk4ModuleConfiguration(), gearRatio, driveMotorPort, steerMotorPort, steerEncoderPort, steerOffset, canBus);
     }
 
     /**
@@ -185,7 +244,8 @@ public final class Mk4SwerveModuleHelper {
                 new NeoSteerConfiguration<>(
                         steerMotorPort,
                         new CanCoderAbsoluteConfiguration(steerEncoderPort, steerOffset)
-                )
+                ),
+                "rio"
         );
     }
 
@@ -240,7 +300,8 @@ public final class Mk4SwerveModuleHelper {
                 new NeoSteerConfiguration<>(
                         steerMotorPort,
                         new CanCoderAbsoluteConfiguration(steerEncoderPort, steerOffset)
-                )
+                ),
+                "rio"
         );
     }
 
@@ -296,7 +357,8 @@ public final class Mk4SwerveModuleHelper {
                 new NeoSteerConfiguration<>(
                         steerMotorPort,
                         new CanCoderAbsoluteConfiguration(steerEncoderPort, steerOffset)
-                )
+                ),
+                "rio"
         );
     }
 
@@ -351,7 +413,8 @@ public final class Mk4SwerveModuleHelper {
                 new NeoSteerConfiguration<>(
                         steerMotorPort,
                         new CanCoderAbsoluteConfiguration(steerEncoderPort, steerOffset)
-                )
+                ),
+                "rio"
         );
     }
 
@@ -407,7 +470,8 @@ public final class Mk4SwerveModuleHelper {
                 new Falcon500SteerConfiguration<>(
                         steerMotorPort,
                         new CanCoderAbsoluteConfiguration(steerEncoderPort, steerOffset)
-                )
+                ),
+                "rio"
         );
     }
 
@@ -462,7 +526,8 @@ public final class Mk4SwerveModuleHelper {
                 new Falcon500SteerConfiguration<>(
                         steerMotorPort,
                         new CanCoderAbsoluteConfiguration(steerEncoderPort, steerOffset)
-                )
+                ),
+                "rio"
         );
     }
 

@@ -14,13 +14,14 @@ public interface DriveControllerFactory<Controller extends DriveController, Driv
     default Controller create(
             ShuffleboardContainer container,
             DriveConfiguration driveConfiguration,
-            ModuleConfiguration moduleConfiguration
+            ModuleConfiguration moduleConfiguration,
+            String canBus
     ) {
-        var controller = create(driveConfiguration, moduleConfiguration);
+        var controller = create(driveConfiguration, moduleConfiguration, canBus);
         addDashboardEntries(container, controller);
 
         return controller;
     }
 
-    Controller create(DriveConfiguration driveConfiguration, ModuleConfiguration moduleConfiguration);
+    Controller create(DriveConfiguration driveConfiguration, ModuleConfiguration moduleConfiguration, String canBus);
 }

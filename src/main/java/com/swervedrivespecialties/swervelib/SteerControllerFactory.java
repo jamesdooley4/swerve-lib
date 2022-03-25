@@ -15,13 +15,14 @@ public interface SteerControllerFactory<Controller extends SteerController, Stee
     default Controller create(
             ShuffleboardContainer dashboardContainer,
             SteerConfiguration steerConfiguration,
-            ModuleConfiguration moduleConfiguration
+            ModuleConfiguration moduleConfiguration,
+            String canBus
     ) {
-        var controller = create(steerConfiguration, moduleConfiguration);
+        var controller = create(steerConfiguration, moduleConfiguration, canBus);
         addDashboardEntries(dashboardContainer, controller);
 
         return controller;
     }
 
-    Controller create(SteerConfiguration steerConfiguration, ModuleConfiguration moduleConfiguration);
+    Controller create(SteerConfiguration steerConfiguration, ModuleConfiguration moduleConfiguration, String canBus);
 }
