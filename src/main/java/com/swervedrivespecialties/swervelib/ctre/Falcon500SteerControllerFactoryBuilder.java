@@ -230,9 +230,6 @@ public final class Falcon500SteerControllerFactoryBuilder {
             }
 
             motor.set(motorControlMode, adjustedReferenceAngleRadians / motorEncoderPositionCoefficient);
-            if (RobotBase.isSimulation()) {
-                motor.getSimCollection().setIntegratedSensorRawPosition((int)(adjustedReferenceAngleRadians / motorEncoderPositionCoefficient));
-            }
 
             this.referenceAngleRadians = referenceAngleRadians;
         }
